@@ -1,0 +1,39 @@
+{% extends "notes/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="appbar">
+    <footer class="footer">
+        <a href="/home" class="a"><input type="image" src="{% static 'notes/img/home.png' %}" class="home" alt="Submit"/></a>
+      </footer>
+    <img src="{% static 'notes/img/logo-getit.png' %}" class="logo"/>
+    <p class="subtitle">Como o Post-it, mas com outro verbo</p>
+    </div>
+
+    <p class="text">Tags por assunto</p>
+
+    <main class="container"> 
+
+        <div class="card-container-tag">
+            {% for note in notes %}
+            
+            <a href="tagSelect/{{note.tag}}">
+              <div class="card">
+                <form  class="tag-note-tags" action="tagSelect/{{note.tag}}">
+                    <!-- <button class="tag-note-tags" type="submit" alt="Submit"> -->
+                      {{ note.tag }}
+                    </button>
+                </form>
+                  {% csrf_token %}
+            </div>
+            </a>
+    {% endfor %}
+    </div>
+
+</main>
+
+
+
+
+
+{% endblock %}
